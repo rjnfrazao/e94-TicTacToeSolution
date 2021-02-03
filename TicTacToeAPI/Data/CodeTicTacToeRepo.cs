@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using TicTacToeAPI.Models;
+using TicTacToeAPI.Lib;
+using TicTacToeAPI.DataObjects;
 
 namespace TicTacToeAPI.Data
 {
@@ -8,7 +9,6 @@ namespace TicTacToeAPI.Data
     {
         private string symbols;
         private char cell;
-        private readonly Random _random = new Random();
 
 
         // Method implements the player move
@@ -40,7 +40,7 @@ namespace TicTacToeAPI.Data
             }
 
             // If computer is not the first to play, check if the move received is consistent.
-            Boolean isComputerFirstToPlay = IsComputerFirst(move.gameBoard);
+            Boolean isComputerFirstToPlay = Rules.IsComputerFirst(move.gameBoard);
             if (!isComputerFirstToPlay)
             {
                 // Invalid move
@@ -65,11 +65,25 @@ namespace TicTacToeAPI.Data
         {
             var computerMoveResult = new Tictactoe();
 
-            // Check if computer plays first, so apply strategy to play first.
+            // Check if computer plays first, so play first.
             if (isComputerFirstToPlay)
             {
-                computerMoveResult = aiComputerFirst(move);
+                computerMoveResult = AiComputer.FirstMove(move);
                 return computerMoveResult;
+            }
+
+
+            // Computer tries to win.
+            var winnerData = new WinnerData();
+            winnerData = AiComputer.FindWinnerPosition(move.azurePlayerSymbol, move);
+            if (winnerData.winner != -1)
+            {
+                move.move = winnerData.cell;
+                move.winner = winnerData.winner;
+                move.winPositions = winnerData.winPositions;
+                move.gameBoard[winnerData.cell] = move.azurePlayerSymbol;
+
+                return move;
             }
             // Find a winner position
             //aiWinnerMove()
@@ -82,80 +96,6 @@ namespace TicTacToeAPI.Data
             return computerMoveResult;
         }
 
-        // ##############################################################################################
-        // Check if computer should be the first to play.
-        // Return - boolean True - Computer first / No - 
-        private Boolean IsComputerFirst(char[] gameBoard)
-        {
-
-            // check if games's board has a wrong symbol
-            for (int i = 0; i < 9; i++)
-            {
-                cell = gameBoard[i];
-                if (!cell.Equals('?'))
-                {
-                    return false;
-                };
-            }
-            return true;
-        }
-
-        // ##############################################################################################
-        // Check if computer should be the first to play.
-        // Return - boolean True - Computer first, otherwise returns false
-        private Tictactoe aiComputerFirst(Tictactoe move)
-        {
-            int randomCell = 9;
-            var options = new System.Collections.Generic.HashSet<int>() { 0, 2, 6, 8 };
-            do
-            {
-                randomCell = _random.Next(0, 8);
-            }
-            while (!options.Contains(randomCell));
-
-            // set the position
-            move.gameBoard[randomCell] = move.azurePlayerSymbol;
-
-            return (move);
-        }
-
-
-        // ##############################################################################################
-        // Check if computer's can win
-        // Return - boolean True - Computer first, otherwise returns false
-        private Tictactoe aiComputerFirst(Tictactoe move)
-        {
-            int randomCell = 9;
-            var options = new System.Collections.Generic.HashSet<int>() { 0, 2, 6, 8 };
-            do
-            {
-                randomCell = _random.Next(0, 8);
-            }
-            while (!options.Contains(randomCell));
-
-            // set the position
-            move.gameBoard[randomCell] = move.azurePlayerSymbol;
-
-            return (move);
-        }
-
-        // ##############################################################################################
-        // Check if computer's can win
-        // Return - boolean True - Computer first, otherwise returns false
-        private Tictactoe aiComputerFirst(Tictactoe move)
-        {
-            int randomCell = 9;
-            var options = new System.Collections.Generic.HashSet<int>() { 0, 2, 6, 8 };
-            do
-            {
-                randomCell = _random.Next(0, 8);
-            }
-            while (!options.Contains(randomCell));
-
-            // set the position
-            move.gameBoard[randomCell] = move.azurePlayerSymbol;
-
-            return (move);
-        }
+ 
     }
 }

@@ -29,4 +29,14 @@ namespace TicTacToeAPI.DataObjects
         public char[] gameBoard { get; set; } // {"?", "?", "?", "?", "?", "?", "?", "?", "?"}  
 
     }
+
+    // Data object used to store the winner information.
+    public class WinnerData
+    {
+        public int cell { get; set; } = -1; // Winner cell 
+        public char winner { get; set; } = '?'; // Player's symbol 
+        public int[] winPositions { get; set; } = { 0, 0, 0 }; // sequence of the winner
+
+    }
+
 }
