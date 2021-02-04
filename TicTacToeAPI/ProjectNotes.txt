@@ -1,0 +1,11 @@
+﻿TicTatToe API
+
+Solution Design
+
+/Lib/AiComputer : Static class  which implements all logics and strategies performed by the computer to execute the move.
+/Lib/Game : Class which implements a round of the game (receive a move -> validate -> computer analysis -> returns computer move.
+/Lib/Rules : Class which implements some rules of the game that must be followed.
+
+/Models/Tictactoe - Model represententation of the game.
+
+/DataObjects/TicTacToeMoveDto - Store classes with represents some structures needed in the project

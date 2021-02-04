@@ -16,13 +16,13 @@ namespace TicTacToeAPI.DataObjects
 
     }
 
-    // Data object which represents the result. Computer's move. (API outbound data)
+    // *TO BE BELETED * Data object which represents the result. Computer's move. (API outbound data)
     public class TicTacToeMoveResultDto
     {
         public int move { get; set; }
         public char azurePlayerSymbol { get; set; }
         public char humanPlayerSymbol { get; set; }
-        public char winner { get; set; }
+        public string winner { get; set; }
 
         public int[] winPositions { get; set; }
 
@@ -34,7 +34,7 @@ namespace TicTacToeAPI.DataObjects
     public class WinnerData
     {
         public int cell { get; set; } = -1; // Winner cell 
-        public char winner { get; set; } = '?'; // Player's symbol 
+        public string winner { get; set; } = "?"; // Player's symbol 
         public int[] winPositions { get; set; } = { 0, 0, 0 }; // sequence of the winner
 
     }

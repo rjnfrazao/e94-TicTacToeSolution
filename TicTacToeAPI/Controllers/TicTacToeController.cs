@@ -45,15 +45,7 @@ namespace TicTacToeAPI.Controllers
                 // Execute the move -> receive back the board status in data model format
                 var tictactoeResult = _repository.executemove(tictactoeModel);
 
-                // Check if there was a winner after the move.
-                if (tictactoeResult.winner.Equals('X') || tictactoeResult.winner.Equals('O'))
-                {
-                    return Ok(tictactoeResult);                                  // Computer won. Return winner information
-                } else
-                {
-                    return Ok(_mapper.Map<TicTacToeMoveDto>(tictactoeResult));  // Return computer move. Data object is different.
-                }
-                
+                return Ok(tictactoeResult);                                  // Computer won. Return winner information               
             }
             catch (Exception ex)
             {

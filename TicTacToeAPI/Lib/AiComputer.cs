@@ -29,8 +29,14 @@ namespace TicTacToeAPI.Lib
             }
             while (!options.Contains(randomCell));
 
+            // set the move
+            move.move = randomCell;
+
             // set the position
             move.gameBoard[randomCell] = move.azurePlayerSymbol;
+
+            // set inconclusive
+            move.winner = "inconclusive";
 
             return (move);
         }
@@ -43,40 +49,40 @@ namespace TicTacToeAPI.Lib
         // Return - (0..8) - Cell number to win
         //          (-1) - No victory yet
         // ##############################################################################################
-        public static WinnerData FindWinnerPosition(char symbol, Tictactoe move)
+        public static WinnerData FindWinnerPosition(char symbol, char[] gameBoard)
         {
             int[] bobbyBoard = new int[9];
             WinnerData winnerResult = new WinnerData();
 
-            int CheckSequence(int c1, int c2, int c3)
-            {
-                int sum = bobbyBoard[c1] + bobbyBoard[c2] + bobbyBoard[c3];
-                if (sum==2)
+                int CheckSequence(int c1, int c2, int c3)
                 {
+                    int sum = bobbyBoard[c1] + bobbyBoard[c2] + bobbyBoard[c3];
+                    if (sum==2)
+                    {
                     // set  result move values
-                    winnerResult.winner = symbol;
-                    winnerResult.winPositions[0] = c1;
-                    winnerResult.winPositions[1] = c2;
-                    winnerResult.winPositions[2] = c3;
+                        winnerResult.winner = symbol.ToString();
+                        winnerResult.winPositions[0] = c1;
+                        winnerResult.winPositions[1] = c2;
+                        winnerResult.winPositions[2] = c3;
 
-                    // find and return the cell position to win.
-                    if (bobbyBoard[c1] == 0) return c1;
-                    if (bobbyBoard[c2] == 0) return c2;
-                    if (bobbyBoard[c3] == 0) return c3;
+                        // find and return the cell position to win.
+                        if (bobbyBoard[c1] == 0) return c1;
+                        if (bobbyBoard[c2] == 0) return c2;
+                        if (bobbyBoard[c3] == 0) return c3;
 
-                } else
-                {
+                    } else
+                    {
+                        return -1;
+                    }
+
                     return -1;
                 }
-
-                return -1;
-            }
 
 
             // Bobby always prepares the board using numbers before analysis
             for (int i = 0; i < 9; i++)
             {
-                char cell = move.gameBoard[i];
+                char cell = gameBoard[i];
                 if (cell.Equals('?'))  // If finds a cell different than '?' returns false
                 {
                     bobbyBoard[i] = 0;
@@ -113,6 +119,34 @@ namespace TicTacToeAPI.Lib
 
         }
 
- 
+
+        // ##############################################################################################
+        // Bobby Fischer's Method : When bored during the game, he does a random move.
+        // Input :  move - Current human player's move.
+        // Return : void.
+        //
+        // ##############################################################################################
+        public static Tictactoe RandomMove(Tictactoe move)
+        {
+            int randomCell;
+            _random = new Random();
+
+            do
+            {
+                randomCell = _random.Next(0, 8);
+            }
+            while (!move.gameBoard[randomCell].Equals('?'));
+
+            // set the move
+            move.move = randomCell;
+
+            // set the position
+            move.gameBoard[randomCell] = move.azurePlayerSymbol;
+
+            return move;
+        }
+
+
+
     }
 }

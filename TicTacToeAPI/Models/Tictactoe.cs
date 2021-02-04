@@ -10,7 +10,7 @@ namespace TicTacToeAPI.Models
         public int move { get; set; }
         public char azurePlayerSymbol { get; set; }
         public char humanPlayerSymbol { get; set; }
-        public char winner { get; set; }
+        public string winner { get; set; }
 
         public int[] winPositions { get; set; }
 
