@@ -35,7 +35,18 @@ namespace TicTacToeAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TicTacToeAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "TicTacToeAPI",
+                    Version = "v1",
+                    Description = "API implementing TicTacToe move performed by a computer.",
+                    TermsOfService = new Uri("http://www.fluminense.com.br"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Ricardo Frazao",
+                        Email = "dontcare@nowhere.co"
+                    }
+                });
             });
 
             // CHANGED

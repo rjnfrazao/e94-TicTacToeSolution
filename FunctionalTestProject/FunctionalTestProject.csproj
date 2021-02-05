@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+  
+    
+    <GenerateDocumentationFile>true<GenerateDocumentationFile>
+      <NoWarn>;1591 NoWarn</NoWarn>  
   </PropertyGroup>
 
   <ItemGroup>

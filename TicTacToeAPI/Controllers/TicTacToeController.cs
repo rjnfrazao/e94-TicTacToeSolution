@@ -27,17 +27,28 @@ namespace TicTacToeAPI.Controllers
             _mapper = mapper;
         }
 
-        // POST: TicTacToeController/executemove
+        /// POST: executemove 
+        /// <summary>
+        /// Execute the computer move, based on a player's move.
+        /// </summary>
+        /// <param name="MoveExecuted">Status of the game, after the a player's move.</param>
+        /// <returns>Status of the game, after the computer's move.</returns>
+        /// <remarks>
+        /// Sample request where computer stars playing.
+        /// Post
+        /// {
+        /// "move": 2,
+        /// "azurePlayerSymbol": "X",
+        /// "humanPlayerSymbol": "O",
+        /// "gameBoard": ["?","?","?","?","?","?","?","?","?"]
+        ///  }
+        /// </remarks>
         [Route("executemove")]
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult<TicTacToeMoveDto> ExecuteMove(TicTacToeMoveDto MoveExecuted)
+        public ActionResult<TicTacToeMoveResultDto> ExecuteMove(TicTacToeMoveDto MoveExecuted)
         {
             try
             {
-                // REMOVE var MoveResult = _repository.executemove();
-                // REMOVE return RedirectToAction(nameof(Index));
-                // REMOVE return Ok(MoveResult);
 
                 // Map DataObject -> DataModel
                 var tictactoeModel = _mapper.Map<Tictactoe>(MoveExecuted);
