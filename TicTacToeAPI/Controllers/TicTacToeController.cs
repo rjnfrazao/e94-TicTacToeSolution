@@ -29,7 +29,7 @@ namespace TicTacToeAPI.Controllers
 
         /// POST: executemove 
         /// <summary>
-        /// Execute the computer move, based on a player's move.
+        /// Execute the computer's move, based on a player's move.
         /// </summary>
         /// <param name="MoveExecuted">Status of the game, after the a player's move.</param>
         /// <returns>Status of the game, after the computer's move.</returns>

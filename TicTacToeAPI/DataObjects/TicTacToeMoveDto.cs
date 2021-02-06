@@ -15,7 +15,7 @@ namespace TicTacToeAPI.DataObjects
         public int move { get; set; }
 
         /// <summary>
-        /// azurePlayerSymbol: Azure Player's Symbol "X" or "O"
+        /// Azure Player's Symbol "X" or "O"
         /// </summary>
         public char azurePlayerSymbol { get; set; }
 
@@ -36,8 +36,19 @@ namespace TicTacToeAPI.DataObjects
     // *TO BE BELETED * Data object which represents the result. Computer's move. (API outbound data)
     public class TicTacToeMoveResultDto
     {
+        /// <summary>
+        /// move: Computer's move (0..8)
+        /// </summary>
         public int move { get; set; }
+
+        /// <summary>
+        /// Azure Player's Symbol "X" or "O"
+        /// </summary>
         public char azurePlayerSymbol { get; set; }
+
+        /// <summary>
+        /// Human Player's Symbol "X" or "O"
+        /// </summary>
         public char humanPlayerSymbol { get; set; }
 
         /// <summary>
@@ -49,11 +60,16 @@ namespace TicTacToeAPI.DataObjects
         /// </summary>
         public string winner { get; set; }
 
+        /// <summary>
+        /// Winner postions. The three pieces that won the game, otherwise null.
+        /// </summary>
         public int[] winPositions { get; set; }
 
         /// <summary>
-        /// Winner cells. The three cells that won the game. 
-        /// </summary>
+        /// Current game board. '?' location empty, 
+        /// 'X' Player X has a piece on that location. 
+        /// 'O' Player O has a piece on that location. 
+        /// </summary> 
         public char[] gameBoard { get; set; } // {"?", "?", "?", "?", "?", "?", "?", "?", "?"}  
 
     }

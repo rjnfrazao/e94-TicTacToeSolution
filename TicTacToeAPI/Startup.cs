@@ -8,9 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using TicTacToeAPI.Data;
 
@@ -45,7 +48,21 @@ namespace TicTacToeAPI
                     {
                         Name = "Ricardo Frazao",
                         Email = "dontcare@nowhere.co"
-                    }
+                    },
+
+               });
+
+                // ** Added according instructions during the classe. Location where xml is saved.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+
+
+
+                // ** Added based on instructions in class.
+                c.CustomOperationIds(apiDesc =>
+                {
+                    return apiDesc.TryGetMethodInfo(out MethodInfo methodInfo) ? methodInfo.Name : null;
                 });
             });
 
@@ -60,9 +77,19 @@ namespace TicTacToeAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TicTacToeAPI v1"));
+
             }
+
+            // ** Added to use the older 2.0 format so add rest client will work.
+            app.UseSwagger(c => { c.SerializeAsV2 = true; });
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TicTacToeAPI v1");
+
+                // Serve the Swagger UI at the app's root 
+                // (http://localhost:<port>)
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 

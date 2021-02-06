@@ -4,6 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <!-- ** Added based on instructions in class -->
+  <!-- DEMO: Enable documentation file so API has user defined documentation via XML comments -->
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Disable warning: Missing XML comment for publicly visible type or member 'Type_or_Member'-->
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="NewFolder1\**" />
     <Compile Remove="NewFolder\**" />
