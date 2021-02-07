@@ -1,15 +1,35 @@
 ﻿TicTatToe API
 
+* Azzure URL : http://rjnf-tictactoeapi.azurewebsites.net
+
+
+
 Solution Design
 ===============
 
+/Controllers/TicTacToeController : Controller for the end points.
 /Lib/AiComputer : Static class  which implements all logics and strategies performed by the computer to execute the move.
 /Lib/Game : Class which implements a round of the game (receive a move -> validate -> computer analysis -> returns computer move.
 /Lib/Rules : Class which implements some rules of the game that must be followed.
+/Lib/Library : Class used to store libraries of classes commonly used in the project.
+/Data/CodeTicTacToeRepo - Reporitory created trying to achieve the decouple between controller and repository.
+/Data/ITicTacToeRepo - Interface create to separate controller from repository. Decouple approach.
+/Models/Tictactoe - Model represententation of the game which is used internally.
+/DataObjects/TicTacToeMoveDto - Stores the classes which represents the data structured used externally, where you can find the structure of the move executed inbound and the result move response structures needed by the API.
+/DataObjectsMapping/TicTacToeMapping - Class used to apply the mapping between internal and external data structures, not sure if this was a good approach, considerin the small number of properties.
 
-/Models/Tictactoe - Model represententation of the game.
+ERROR Handling
+===============
 
-/DataObjects/TicTacToeMoveDto - Store classes with represents some structures needed in the project
+Code 101 : (Custom) 4.c.ii.3 Move must be in the range between 1..8
+Code 102 : Case 4.b Azure and Human doesn't have oppositive symbols.
+Code 103 : Case 4.c.i Not valid character being used in the game board.
+Code 104 : (Custom) Case 4.c.ii.3 Player move in the wrong location, empty position (?) or opponent position.
+Code 105 : Case 4.c.ii.1 Having unbalanced number of pieces between players.
+Code 106 : Case 4.c.ii.2 Not having 9 elements.
+
+
+
 
 
 Challenges

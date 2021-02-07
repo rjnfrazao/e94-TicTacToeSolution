@@ -13,7 +13,7 @@ namespace TicTacToeAPI.Lib
         {
             try
             {
-                int move = inboundMove.move;
+                int move = (int)inboundMove.move;
                 char azurePlayerSymbol = inboundMove.azurePlayerSymbol;
                 char humanPlayerSymbol = inboundMove.humanPlayerSymbol;
                 char[] gameBoard = inboundMove.gameBoard.Select(c => c).ToArray();

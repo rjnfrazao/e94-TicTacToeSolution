@@ -12,7 +12,7 @@ namespace TicTacToeAPI.DataObjects
         /// <summary>
         /// move: Move position (0..8)
         /// </summary>
-        public int move { get; set; }
+        public int? move { get; set; }
 
         /// <summary>
         /// Azure Player's Symbol "X" or "O"

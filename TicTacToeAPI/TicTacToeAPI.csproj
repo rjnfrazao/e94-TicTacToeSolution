@@ -10,6 +10,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- Disable warning: Missing XML comment for publicly visible type or member 'Type_or_Member'-->
     <NoWarn>$(NoWarn);1591</NoWarn>
+    <UserSecretsId>dc98eae4-df02-4dd0-b107-0967e470ed16</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

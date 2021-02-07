@@ -16,6 +16,11 @@ namespace TicTacToeAPI.Controllers
 {
     [Route("")]
     [ApiController]
+
+    ///
+    /// Controller responsible to implement the end point.
+    /// 
+
     public class TicTacToeController : Controller
     {
         private readonly ITicTacToeRepo _repository;
@@ -70,7 +75,8 @@ namespace TicTacToeAPI.Controllers
             {
 
                 var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-                return BadRequest(ex.Data[0]);
+                return BadRequest(ex.Data[0]);              // Return the error code.
+
                 //return BadRequest(ex.Message);            Disabled as I wasn't able to use typeog(string), cause an error during the test using string.
             }
         }
