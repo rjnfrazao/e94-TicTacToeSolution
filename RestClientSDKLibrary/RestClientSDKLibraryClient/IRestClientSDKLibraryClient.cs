@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace RestClientSDKLibrary
+namespace RestClientSdkLibrary
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace RestClientSDKLibrary
     /// <summary>
     /// API implementing TicTacToe move performed by a computer.
     /// </summary>
-    public partial interface IRestClientSDKLibraryClient : IDisposable
+    public partial interface IRestClientSdkLibraryClient : IDisposable
     {
         /// <summary>
         /// The base URI of the service.
@@ -60,7 +60,7 @@ namespace RestClientSDKLibrary
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<TicTacToeMoveResultDto>> ExecuteMoveWithHttpMessagesAsync(TicTacToeMoveDto body = default(TicTacToeMoveDto), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<object>> ExecuteMoveWithHttpMessagesAsync(TicTacToeMoveDto body = default(TicTacToeMoveDto), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

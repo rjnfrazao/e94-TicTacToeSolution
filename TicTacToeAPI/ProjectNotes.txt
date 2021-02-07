@@ -1,6 +1,7 @@
 ﻿TicTatToe API
 
 Solution Design
+===============
 
 /Lib/AiComputer : Static class  which implements all logics and strategies performed by the computer to execute the move.
 /Lib/Game : Class which implements a round of the game (receive a move -> validate -> computer analysis -> returns computer move.
@@ -9,3 +10,25 @@ Solution Design
 /Models/Tictactoe - Model represententation of the game.
 
 /DataObjects/TicTacToeMoveDto - Store classes with represents some structures needed in the project
+
+
+Challenges
+==========
+
+1) I added into the If Development Env, the following lines, this prevented me to create the SDK Client
+
+            // ** Added to use the older 2.0 format so add rest client will work.
+            app.UseSwagger(c => { c.SerializeAsV2 = true; });
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "TicTacToeAPI v1");
+
+                // Serve the Swagger UI at the app's root 
+                // (http://localhost:<port>)
+                c.RoutePrefix = string.Empty;
+            });
+
+2) I forgot the followiong lines into my controller file, this prevented shagger to add those directives into JSON file, this resulted into a different Class Object being used into my RestClientSDKLibraryClient, later I was struglling to assert the response for Bad Request, because it was an response of HttpOperationResponse<TicTacToeMoveResultDto> instead of HttpOperationResponse<object>.
+        [ProducesResponseType(typeof(TicTacToeMoveResultDto), StatusCodes.Status200OK)]     // Tells swagger what the response format will be for a success message
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]                // Tells swagger that the response format will be an int for a BadRequest (400)
+ 

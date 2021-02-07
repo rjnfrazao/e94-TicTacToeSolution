@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TicTacToeAPI.Data;
 using TicTacToeAPI.DataObjects;
+using TicTacToeAPI.Lib;
 using TicTacToeAPI.Models;
 
 namespace TicTacToeAPI.Controllers
@@ -43,12 +45,18 @@ namespace TicTacToeAPI.Controllers
         /// "gameBoard": ["?","?","?","?","?","?","?","?","?"]
         ///  }
         /// </remarks>
+        /// 
+        [ProducesResponseType(typeof(TicTacToeMoveResultDto), StatusCodes.Status200OK)]     // Tells swagger what the response format will be for a success message
+        [ProducesResponseType(typeof(int), StatusCodes.Status400BadRequest)]                // Tells swagger that the response format will be an int for a BadRequest (400)
         [Route("executemove")]
         [HttpPost]
         public ActionResult<TicTacToeMoveResultDto> ExecuteMove(TicTacToeMoveDto MoveExecuted)
         {
             try
             {
+
+                // * PENDING - Json format validation
+                bool isValid = Library.IsValidPayload(MoveExecuted);
 
                 // Map DataObject -> DataModel
                 var tictactoeModel = _mapper.Map<Tictactoe>(MoveExecuted);
@@ -62,8 +70,8 @@ namespace TicTacToeAPI.Controllers
             {
 
                 var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Data[0]);
+                //return BadRequest(ex.Message);            Disabled as I wasn't able to use typeog(string), cause an error during the test using string.
             }
         }
     }

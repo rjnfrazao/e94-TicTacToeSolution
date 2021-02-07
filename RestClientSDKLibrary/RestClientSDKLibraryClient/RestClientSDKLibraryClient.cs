@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace RestClientSDKLibrary
+namespace RestClientSdkLibrary
 {
     using System;
     using System.Linq;
@@ -23,7 +23,7 @@ namespace RestClientSDKLibrary
     /// <summary>
     /// API implementing TicTacToe move performed by a computer.
     /// </summary>
-    public partial class RestClientSDKLibraryClient : ServiceClient<RestClientSDKLibraryClient>, IRestClientSDKLibraryClient
+    public partial class RestClientSdkLibraryClient : ServiceClient<RestClientSdkLibraryClient>, IRestClientSdkLibraryClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -46,18 +46,18 @@ namespace RestClientSDKLibrary
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected RestClientSDKLibraryClient(params DelegatingHandler[] handlers) : base(handlers)
+        protected RestClientSdkLibraryClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             this.Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -65,13 +65,13 @@ namespace RestClientSDKLibrary
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected RestClientSDKLibraryClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        protected RestClientSdkLibraryClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             this.Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -79,7 +79,7 @@ namespace RestClientSDKLibrary
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected RestClientSDKLibraryClient(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        protected RestClientSdkLibraryClient(Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -89,7 +89,7 @@ namespace RestClientSDKLibrary
         }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -100,7 +100,7 @@ namespace RestClientSDKLibrary
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected RestClientSDKLibraryClient(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        protected RestClientSdkLibraryClient(Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -110,7 +110,7 @@ namespace RestClientSDKLibrary
         }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Subscription credentials which uniquely identify client subscription.
@@ -118,7 +118,7 @@ namespace RestClientSDKLibrary
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public RestClientSDKLibraryClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public RestClientSdkLibraryClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (credentials == null)
             {
@@ -132,7 +132,7 @@ namespace RestClientSDKLibrary
         }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Subscription credentials which uniquely identify client subscription.
@@ -143,7 +143,7 @@ namespace RestClientSDKLibrary
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public RestClientSDKLibraryClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public RestClientSdkLibraryClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (credentials == null)
             {
@@ -157,7 +157,7 @@ namespace RestClientSDKLibrary
         }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -168,7 +168,7 @@ namespace RestClientSDKLibrary
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public RestClientSDKLibraryClient(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public RestClientSdkLibraryClient(Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -187,7 +187,7 @@ namespace RestClientSDKLibrary
         }
 
         /// <summary>
-        /// Initializes a new instance of the RestClientSDKLibraryClient class.
+        /// Initializes a new instance of the RestClientSdkLibraryClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -201,7 +201,7 @@ namespace RestClientSDKLibrary
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        public RestClientSDKLibraryClient(Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public RestClientSdkLibraryClient(Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -279,7 +279,7 @@ namespace RestClientSDKLibrary
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<HttpOperationResponse<TicTacToeMoveResultDto>> ExecuteMoveWithHttpMessagesAsync(TicTacToeMoveDto body = default(TicTacToeMoveDto), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<object>> ExecuteMoveWithHttpMessagesAsync(TicTacToeMoveDto body = default(TicTacToeMoveDto), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -341,7 +341,7 @@ namespace RestClientSDKLibrary
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 400)
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -359,7 +359,7 @@ namespace RestClientSDKLibrary
                 throw ex;
             }
             // Create Result
-            var _result = new HttpOperationResponse<TicTacToeMoveResultDto>();
+            var _result = new HttpOperationResponse<object>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             // Deserialize Response
@@ -369,6 +369,24 @@ namespace RestClientSDKLibrary
                 try
                 {
                     _result.Body = SafeJsonConvert.DeserializeObject<TicTacToeMoveResultDto>(_responseContent, this.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
+            if ((int)_statusCode == 400)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = SafeJsonConvert.DeserializeObject<int?>(_responseContent, this.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

@@ -2,7 +2,7 @@
 // Changes may cause incorrect behavior and will be lost if the code is
 // regenerated.
 
-namespace RestClientSDKLibrary
+namespace RestClientSdkLibrary
 {
     using System;
     using System.Collections;
@@ -13,9 +13,9 @@ namespace RestClientSDKLibrary
     using Models;
 
     /// <summary>
-    /// Extension methods for RestClientSDKLibraryClient.
+    /// Extension methods for RestClientSdkLibraryClient.
     /// </summary>
-    public static partial class RestClientSDKLibraryClientExtensions
+    public static partial class RestClientSdkLibraryClientExtensions
     {
             /// <summary>
             /// Execute the computer's move, based on a player's move.
@@ -34,9 +34,9 @@ namespace RestClientSDKLibrary
             /// <param name='body'>
             /// Status of the game, after the a player's move.
             /// </param>
-            public static TicTacToeMoveResultDto ExecuteMove(this IRestClientSDKLibraryClient operations, TicTacToeMoveDto body = default(TicTacToeMoveDto))
+            public static object ExecuteMove(this IRestClientSdkLibraryClient operations, TicTacToeMoveDto body = default(TicTacToeMoveDto))
             {
-                return Task.Factory.StartNew(s => ((IRestClientSDKLibraryClient)s).ExecuteMoveAsync(body), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IRestClientSdkLibraryClient)s).ExecuteMoveAsync(body), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -59,7 +59,7 @@ namespace RestClientSDKLibrary
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TicTacToeMoveResultDto> ExecuteMoveAsync(this IRestClientSDKLibraryClient operations, TicTacToeMoveDto body = default(TicTacToeMoveDto), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<object> ExecuteMoveAsync(this IRestClientSdkLibraryClient operations, TicTacToeMoveDto body = default(TicTacToeMoveDto), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ExecuteMoveWithHttpMessagesAsync(body, null, cancellationToken).ConfigureAwait(false))
                 {

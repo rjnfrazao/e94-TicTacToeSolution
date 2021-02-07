@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RestClientSDKLibrary
+namespace RestClientSdkLibrary
 {
     public class Class1
     {
