@@ -30,8 +30,6 @@ Code 106 : Case 4.c.ii.2 Not having 9 elements.
 
 
 
-
-
 Challenges
 ==========
 
@@ -51,4 +49,11 @@ Challenges
 2) I forgot the followiong lines into my controller file, this prevented shagger to add those directives into JSON file, this resulted into a different Class Object being used into my RestClientSDKLibraryClient, later I was struglling to assert the response for Bad Request, because it was an response of HttpOperationResponse<TicTacToeMoveResultDto> instead of HttpOperationResponse<object>.
         [ProducesResponseType(typeof(TicTacToeMoveResultDto), StatusCodes.Status200OK)]     // Tells swagger what the response format will be for a success message
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]                // Tells swagger that the response format will be an int for a BadRequest (400)
+
+3) (Nice to have) I wasn't able to implement a friendly error message, sent back in the response together with the error code.
+
+4) I wasn't able to implement the schema validation of the Json. I though it would be so simple, but all explanations in the internet were very complicated for a beginner like me with C# + JSON.
+
+5) Every time any correction was implemented in the code, I had to recreate the Client SDK again to run the test.
+
  

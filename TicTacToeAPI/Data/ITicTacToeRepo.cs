@@ -8,14 +8,7 @@ namespace TicTacToeAPI.Data
 {
     public interface ITicTacToeRepo
     {
-        public Tictactoe executemove(Tictactoe move);       
+        public TicTacToeMoveResultDto executemove(Tictactoe move);       
     }
 
-    public class TMoveID
-    {
-    }
-
-    public class TicStatus
-    {
-    }
 }

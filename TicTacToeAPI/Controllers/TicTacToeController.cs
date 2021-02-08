@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +16,9 @@ namespace TicTacToeAPI.Controllers
     [Route("")]
     [ApiController]
 
-    ///
-    /// Controller responsible to implement the end point.
-    /// 
+    //
+    // Controller responsible to implement the end point.
+    // 
 
     public class TicTacToeController : Controller
     {

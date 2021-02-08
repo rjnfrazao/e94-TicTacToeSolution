@@ -52,41 +52,142 @@ namespace TicTacToeAPI.Lib
         }
 
 
+ 
         // ##############################################################################################
-        // Tictactoe's rule : Game tied. Check if the game tied.
-        // Returns: (True) - Game tied.
-        //          (False) - Not tied.
+        // Check if the sequence is a winner one.
+        // Input : c1 - number of the first position
+        //         c2 - number of the second position
+        //         c3 - number of the third position
+        // Return : symbol of the winner player or '?' not winner sequence
+        //
         // ##############################################################################################
-        public static Boolean IsGameTied(char[] gameBoard)
+
+        private static char IsWinnerSequence(char c1, char c2, char c3)
         {
-            var winnerData = new WinnerData();
 
-            bool gameEnd = IsBoardGameFull(gameBoard);
-            if (gameEnd)    // Check if game finished
+            int sum = (int)c1 + (int)c2 + (int)c3;
+
+            if (sum == 237) return 'O';
+            if (sum == 264) return 'X';
+
+            return '?';
+        }
+
+        // ##############################################################################################
+        // Check if the there is a winner in the board.
+        // Input : gameBoard : Game Board structure;
+        //         
+        // Return : WinnerData.winner : symbol of the winner player or '?' not winner sequence
+        //          WinnerDAta.winnerPositions : positions of the winner, otherwise null    
+        // ##############################################################################################
+
+        public static WinnerData IsThereWinner(char[] gameBoard)
+        {
+            char symbol;
+            WinnerData winnerResult = new WinnerData();
+
+            // Check vertical lines
+            symbol = IsWinnerSequence(gameBoard[0], gameBoard[3], gameBoard[6]);
+            if (!symbol.Equals('?')) 
             {
-                winnerData = AiComputer.FindWinnerPosition('X', gameBoard);
-                if (winnerData.winner.Equals('X'))
-                {
-                    return false;                       // Game not tied. 'X' won.
-                }
-                else
-                {
-                    winnerData = AiComputer.FindWinnerPosition('O', gameBoard);
-                    if (winnerData.winner.Equals('O'))
-                    {
-                        return false;                   // Game not tied. 'O' won.
-                    }
-                }
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 0, 3, 6 };
+                return winnerResult; 
+            }
 
-                return true;                  // Game Tied. There are no winner. 
+            symbol = IsWinnerSequence(gameBoard[1], gameBoard[4], gameBoard[7]);
+            if (!symbol.Equals('?')) 
+            {
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 1, 4, 7 };
+                return winnerResult;
             }
-            else
-            {               
-                return false;                // Game not tied. Board not full yet.
+
+            symbol = IsWinnerSequence(gameBoard[2], gameBoard[5], gameBoard[8]);
+            if (!symbol.Equals('?'))
+            {
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 2, 5, 8 };
+                return winnerResult;
             }
+
+            // check horizontal lines
+            symbol = IsWinnerSequence(gameBoard[0], gameBoard[1], gameBoard[2]);
+            if (!symbol.Equals('?'))
+            {
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 0, 1, 2 };
+                return winnerResult;
+            }
+
+            symbol = IsWinnerSequence(gameBoard[3], gameBoard[4], gameBoard[5]);
+            if (!symbol.Equals('?'))
+            {
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 3, 4, 5 };
+                return winnerResult;
+            }
+
+            symbol = IsWinnerSequence(gameBoard[6], gameBoard[7], gameBoard[8]);
+            if (!symbol.Equals('?'))
+            {
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 6, 7, 8 };
+                return winnerResult;
+            }
+
+            // check diagonals
+            symbol = IsWinnerSequence(gameBoard[0], gameBoard[4], gameBoard[8]);
+            if (!symbol.Equals('?'))
+            {
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 0, 4, 8 };
+                return winnerResult;
+            }
+
+            symbol = IsWinnerSequence(gameBoard[2], gameBoard[4], gameBoard[6]);
+            if (!symbol.Equals('?'))
+            {
+                winnerResult.winner = symbol.ToString();
+                winnerResult.winPositions = new int[] { 2, 4, 6 };
+                return winnerResult;
+            }
+
+            winnerResult.winner = "?";   // value in case no winner   
+            return winnerResult;         // there is no winner return winnerResult Empty
         }
 
 
- 
+        // ##############################################################################################
+        // Check if there is a tie in the game board.
+        // Input : gameBoard : Game Board structure;
+        //         
+        // Return : true - Game board is a tie
+        //          false - otherwise
+        // ##############################################################################################
+
+        public static bool IsThereTie(char[] gameBoard)
+        {
+
+            // check first if the game board is full
+            bool gameEnd = IsBoardGameFull(gameBoard);
+
+            if (gameEnd)
+            // Game finished
+            {
+                var winnerData = new WinnerData();
+                // check if the game tied
+                winnerData = IsThereWinner(gameBoard);
+
+                if (winnerData.winner.Equals('?'))         
+                // Game tied
+                {
+                    return true;        // Game tie    
+                }
+            }
+
+            return false;               // Game didn't tie.
+        }
+
     }
 }

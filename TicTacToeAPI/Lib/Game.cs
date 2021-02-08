@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using TicTacToeAPI.DataObjects;
 using TicTacToeAPI.Models;
@@ -10,10 +11,12 @@ namespace TicTacToeAPI.Lib
     public class Game
     {
         private Tictactoe _gameMove;
+        private TicTacToeMoveResultDto _gameMoveResult;
 
         public Game(Tictactoe Move)
         {
             _gameMove = Move;
+            _gameMoveResult = Move as TicTacToeMoveResultDto;
         }
 
         // ******************************************************
@@ -98,7 +101,8 @@ namespace TicTacToeAPI.Lib
             {
                 qtyAzzure = qtyX;
                 qtyHuman = qtyO;
-            } else
+            }
+            else
             {
                 qtyAzzure = qtyO;
                 qtyHuman = qtyX;
@@ -107,7 +111,7 @@ namespace TicTacToeAPI.Lib
             // To fail, quantity of pieces must be diferente and
             // Human has two or more pieces than Azzure or Azzure has one or more pieces than Human
             if ((qtyHuman != qtyAzzure) &&
-                    (((qtyHuman - qtyAzzure) > 1) || ((qtyHuman - qtyAzzure) <0)))
+                    (((qtyHuman - qtyAzzure) > 1) || ((qtyHuman - qtyAzzure) < 0)))
             {
                 Exception e = new System.ArgumentException("Game board is unbalanced. There are more pieces of one player than the other. (E105)");
                 e.Data.Add(0, "105");
@@ -128,7 +132,7 @@ namespace TicTacToeAPI.Lib
 
         public Tictactoe ComputerMove(Boolean isComputerFirstToPlay)
         {
-            
+
 
             // Check if computer plays first, so play first.
             if (isComputerFirstToPlay)
@@ -178,6 +182,40 @@ namespace TicTacToeAPI.Lib
             return _gameMove;
         }
 
+
+
+        // ##############################################################################################
+        // Return the game tied response
+        // Input : (True) - Computer plays first
+        //         (False) - Computer move
+        // Return : Computer move result
+        // ##############################################################################################
+
+        public Tictactoe GameTied()
+        {
+            _gameMove.move = null;      // move null
+            _gameMove.winner = "tie";   // winner = tie
+
+            return _gameMove;           // return the response
+        }
+
+
+        // ##############################################################################################
+        // Return the human won response
+        // Input : (True) - Computer plays first
+        //         (False) - Computer move
+        // Return : Computer move result
+        // ##############################################################################################
+
+        public Tictactoe HumanWon(WinnerData winnerData)
+        {
+            _gameMove.move = null;      // move null
+            _gameMove.winner = winnerData.winner;   // winner symbol
+            _gameMove.winPositions = winnerData.winPositions;
+
+
+            return _gameMove;           // return the response
+        }
 
 
     }
