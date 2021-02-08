@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,12 @@ namespace TicTacToeAPI.Lib
     public class Game
     {
         private Tictactoe _gameMove;
-        private TicTacToeMoveResultDto _gameMoveResult;
+        private TicTacToeMoveResultDto _gameMoveResultDto;   
 
         public Game(Tictactoe Move)
         {
             _gameMove = Move;
-            _gameMoveResult = Move as TicTacToeMoveResultDto;
+
         }
 
         // ******************************************************
@@ -130,15 +131,15 @@ namespace TicTacToeAPI.Lib
         // Return : Computer move result
         // ##############################################################################################
 
-        public Tictactoe ComputerMove(Boolean isComputerFirstToPlay)
+        public TicTacToeMoveResultDto ComputerMove(Boolean isComputerFirstToPlay)
         {
-
 
             // Check if computer plays first, so play first.
             if (isComputerFirstToPlay)
             {
                 _gameMove = AiComputer.FirstMove(_gameMove);
-                return _gameMove;
+                initializeMoveResultDto();        // Map internal data structure into MoveResultDto data structure.
+                return _gameMoveResultDto;
             }
 
 
@@ -155,7 +156,8 @@ namespace TicTacToeAPI.Lib
                 _gameMove.winPositions = winnerData.winPositions;
                 _gameMove.gameBoard[winnerData.cell] = _gameMove.azurePlayerSymbol;
 
-                return _gameMove; // Returns winner move
+                initializeMoveResultDto();        // Map internal data structure into MoveResultDto data structure.
+                return _gameMoveResultDto;                                                      // Returns winner move
             }
 
 
@@ -179,7 +181,9 @@ namespace TicTacToeAPI.Lib
                 _gameMove.winner = "inconclusive";
             }
 
-            return _gameMove;
+            initializeMoveResultDto();        // Map internal data structure into MoveResultDto data structure.
+            return _gameMoveResultDto;                                                      // Returns random computer move
+
         }
 
 
@@ -191,12 +195,13 @@ namespace TicTacToeAPI.Lib
         // Return : Computer move result
         // ##############################################################################################
 
-        public Tictactoe GameTied()
+        public TicTacToeMoveResultDto GameTied()
         {
-            _gameMove.move = null;      // move null
-            _gameMove.winner = "tie";   // winner = tie
+            initializeMoveResultDto();
+            _gameMoveResultDto.move = null;      // move null
+            _gameMoveResultDto.winner = "tie";   // winner = tie
 
-            return _gameMove;           // return the response
+            return _gameMoveResultDto;           // return the response
         }
 
 
@@ -207,16 +212,24 @@ namespace TicTacToeAPI.Lib
         // Return : Computer move result
         // ##############################################################################################
 
-        public Tictactoe HumanWon(WinnerData winnerData)
+        public TicTacToeMoveResultDto HumanWon(WinnerData winnerData)
         {
-            _gameMove.move = null;      // move null
-            _gameMove.winner = winnerData.winner;   // winner symbol
-            _gameMove.winPositions = winnerData.winPositions;
+            initializeMoveResultDto();
+            _gameMoveResultDto.move = null;      // move null
+            _gameMoveResultDto.winner = winnerData.winner;   // winner symbol
+            _gameMoveResultDto.winPositions = winnerData.winPositions;
 
 
-            return _gameMove;           // return the response
+            return _gameMoveResultDto;           // return the response
         }
 
+        private void initializeMoveResultDto()
+        {
+            var config = new MapperConfiguration(cfg =>
+                cfg.CreateMap<Tictactoe, TicTacToeMoveResultDto>());
+            IMapper mapper = new Mapper(config);
 
+            _gameMoveResultDto = mapper.Map<TicTacToeMoveResultDto>(_gameMove);
+        }
     }
 }

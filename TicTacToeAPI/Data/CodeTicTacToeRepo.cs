@@ -13,9 +13,7 @@ namespace TicTacToeAPI.Data
         // Method implements the player move
         public TicTacToeMoveResultDto executemove(Tictactoe move) // Tictactoe
         {
-            Tictactoe moveResult;
-            //Tictactoe _computerMoveResult = new Tictactoe();
-
+ 
             // Start game object based on current move.
             var Game = new Game(move);
             var winnerData = new WinnerData();
@@ -26,11 +24,11 @@ namespace TicTacToeAPI.Data
 
             // Validate if player won the game
             winnerData = Rules.IsThereWinner(move.gameBoard);
-            if (winnerData.winner.Equals(move.humanPlayerSymbol))
+            if (winnerData.winner.Equals(move.humanPlayerSymbol.ToString()))
             {
                 // Human player is the Winner
                 return Game.HumanWon(winnerData);
-            } else if (winnerData.winner.Equals(move.azurePlayerSymbol))
+            } else if (winnerData.winner.Equals(move.azurePlayerSymbol.ToString()))
             {
                 // Return error, Azzure couldn't be the winner after human move. 
                 Exception e = new System.ArgumentException("Wrong Winner. Azzure couldn't be the winner after human move. (E107)");
@@ -39,7 +37,7 @@ namespace TicTacToeAPI.Data
             } else
             {
                 // Game tied after human move
-                bool isTie = Rules.IsThereTie(gameBoard);    
+                bool isTie = Rules.IsThereTie(move.gameBoard);    
                 if (isTie)
                 {
                     return Game.GameTied();             // Return game tied response after human move.

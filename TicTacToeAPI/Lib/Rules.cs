@@ -179,7 +179,7 @@ namespace TicTacToeAPI.Lib
                 // check if the game tied
                 winnerData = IsThereWinner(gameBoard);
 
-                if (winnerData.winner.Equals('?'))         
+                if (winnerData.winner.Equals("?"))         
                 // Game tied
                 {
                     return true;        // Game tie    
