@@ -35,6 +35,14 @@ namespace TicTacToeAPI.Lib
                 // throw new System.ArgumentException("Invalid move. Move must be between 0 and 8. Please, play correctly. (E101)");
             }
 
+            // check if game board has only 9 elements
+            if (_gameMove.gameBoard.Length != 9)
+            {
+                Exception e = new System.ArgumentException("Invalid number of elements in the game board. Please, sonate some pieces. (E106)");
+                e.Data.Add(0, "106");
+                throw e;
+            }
+
 
             // check if player's symbols are correct
             string symbols = String.Concat(_gameMove.azurePlayerSymbol, _gameMove.humanPlayerSymbol);
@@ -72,14 +80,6 @@ namespace TicTacToeAPI.Lib
                     throw e;
                     //throw new System.ArgumentException("Invalid move. This place still unchecked (?). Please, stop drinking brazilian cachaca when playing. (E104)");
                 }
-            }
-
-            // check if game board has only 9 elements
-            if (_gameMove.gameBoard.Length != 9)
-            {
-                Exception e = new System.ArgumentException("Invalid number of elements in the game board. Please, sonate some pieces. (E106)");
-                e.Data.Add(0, "106");
-                throw e;
             }
 
 
