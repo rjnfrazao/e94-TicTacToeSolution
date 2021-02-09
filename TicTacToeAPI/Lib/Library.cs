@@ -9,7 +9,7 @@ namespace TicTacToeAPI.Lib
     public class Library
     {
 
-        public static bool IsValidPayload (TicTacToeMoveDto move)
+        public static bool IsValidPayload (TicTacToeMoveDto inboundMove)
         {
             try
             {

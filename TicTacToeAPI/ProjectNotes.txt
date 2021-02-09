@@ -1,6 +1,8 @@
-﻿TicTatToe API
+﻿Assignment-01 TicTatToe API
+Ricardo Frazao - rjnfrazao@gmail.com
 
-* Azzure URL : http://rjnf-tictactoeapi.azurewebsites.net
+
+* Azure URL : http://rjnf-tictactoeapi.azurewebsites.net
 
 
 
@@ -30,8 +32,8 @@ Code 106 : Case 4.c.ii.2 Not having 9 elements.
 
 
 
-Challenges
-==========
+Challenges during the assignment
+================================
 
 1) I added into the If Development Env, the following lines, this prevented me to create the SDK Client
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="static/index.js"></script>
+
+    <title>Tic Tac Toe Game</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link href="static/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Tic Tac Toe Game</a>
+
+      <div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="menu-profile"
+              onClick="show_game_options(); return false;"
+              href=""
+              ><strong>Game Options</strong></a>
+          </li>        
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="menu-profile"
+              onClick="start_new_game(); return false;"
+              href=""
+              ><strong>Start New Game</strong></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div name ="game_options" class="game_options">
+    <br><br><br>
+      <table style="width: 400px" class="table table-bordered" align="center">
+        <thead>
+          <tr>
+            <td colspan="2" scope="col"><div name="board_header" class="body" align="center">Game Options</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class ="game_options_cell">
+                <label for="play_first">Who plays first : </label>
+            </td>
+            <td class ="game_options_cell">
+                <select name="play_first" id="id_play_first">
+                        <option value="azzure">Azzure</option>
+                        <option value="human">Human</option>
+                </select>
+            </td>
+          </tr>
+          <tr>
+            <td class ="game_options_cell">
+                <label for="symbol">Player's Symbol : </label>           
+            </td>
+            <td class ="game_options_cell">
+                <select name="symbol" id="id_symbol">
+                        <option value="X">X</option>
+                        <option value="O">O</option>
+                </select>            
+            </td>
+          </tr>
+          <tr>
+            <td class ="game_options_cell">
+                <label for="api_url">API URL: </label>           
+            </td>
+            <td class ="game_options_cell">
+                <input type="text" id="api_url" name="api_url" value:"https://localhost:44376/executemove">      
+            </td>
+          </tr>          
+          <tr>
+            <td colspan="2" class ="game_options_cell" align="center">
+                <button type="button" onClick="change_game_options(); return false;">Change</button>                  
+                <button type="button" onClick="hide_game_options(); return false;">Hide</button>
+            </td>
+          </tr>          
+        </tbody>
+      </table>
+    </div>
+
+    <div name ="game_board" align="center" class="game_board">
+    <br><br><br>
+      <table style="width: 240px" class="table table-bordered">
+        <thead>
+          <tr>
+            <td colspan="3" scope="col"><div name="board_header" class="body" align="center"></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class ="board_cell" id="cell_0" onClick="execute_move(0)"></td>
+            <td class ="board_cell" id="cell_1" onClick="execute_move(1)"></td>
+            <td class ="board_cell" id="cell_2" onClick="execute_move(2)"></td>
+          </tr>
+          <tr>
+            <td class ="board_cell" id="cell_3" onClick="execute_move(3)"></td>
+            <td class ="board_cell" id="cell_4" onClick="execute_move(4)"></td>
+            <td class ="board_cell" id="cell_5" onClick="execute_move(5)"></td>
+          </tr>
+          <tr>
+            <td class ="board_cell" id="cell_6" onClick="execute_move(6)"></td>
+            <td class ="board_cell" id="cell_7" onClick="execute_move(7)"></td>
+            <td class ="board_cell" id="cell_8" onClick="execute_move(8)"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

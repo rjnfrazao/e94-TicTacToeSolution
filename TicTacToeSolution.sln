@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToeAPI", "TicTacToeAPI\TicTacToeAPI.csproj", "{6C895504-E8AE-468D-82CD-068E036E52D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalTest", "FunctionalTest\FunctionalTest.csproj", "{AB440614-9656-4FAB-8DBB-6A198255CC34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionalTest", "FunctionalTest\FunctionalTest.csproj", "{AB440614-9656-4FAB-8DBB-6A198255CC34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestClientSdkLibrary", "RestClientSdkLibrary\RestClientSdkLibrary.csproj", "{38E8996A-D732-4350-8DEC-F397741E0A0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestClientSdkLibrary", "RestClientSdkLibrary\RestClientSdkLibrary.csproj", "{53EBBD68-9611-4449-A716-C81590D9C650}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{AB440614-9656-4FAB-8DBB-6A198255CC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB440614-9656-4FAB-8DBB-6A198255CC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB440614-9656-4FAB-8DBB-6A198255CC34}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38E8996A-D732-4350-8DEC-F397741E0A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38E8996A-D732-4350-8DEC-F397741E0A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38E8996A-D732-4350-8DEC-F397741E0A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38E8996A-D732-4350-8DEC-F397741E0A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53EBBD68-9611-4449-A716-C81590D9C650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EBBD68-9611-4449-A716-C81590D9C650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EBBD68-9611-4449-A716-C81590D9C650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EBBD68-9611-4449-A716-C81590D9C650}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

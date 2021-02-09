@@ -1,0 +1,26 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div id="profile">
+     
+    </div>  
+    <div id="allposts">
+        <h1 id="title-allposts">All Posts</h1>
+        <div class="box" id="div-box-form">
+            <div id="div-form">
+                <h4>New Post</h4>
+                <div id="error-message" class="alert alert-danger"></div>               
+                <form id="post-form">
+                    <div class="form-group">
+                        <textarea class="form-control" id="message" placeholder="Body" rows="5"></textarea>
+                        <input type="button" id="post-form-submit" onClick="upd_post(0)" class="btn btn-primary"/ value="Post">
+                    </div>
+                </form>
+            </div>
+        </div>      
+        <div class="box">
+            <div id="post-list" />
+        </div>
+    </div>
+
+{% endblock %}
