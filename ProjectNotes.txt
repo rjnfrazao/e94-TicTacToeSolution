@@ -1,24 +1,35 @@
 ﻿Assignment-01 TicTatToe API
+E-mail for Azure account + teams : ricardopadeiro@hotmail.com
 Ricardo Frazao - rjnfrazao@gmail.com
 
 
-* Azure URL : http://rjnf-tictactoeapi.azurewebsites.net
+* TicTacToe API  : http://rjnf-tictactoeapi.azurewebsites.net
+
+* TicTacToe Web Application : http://rjnf-tictactoewebapp.azurewebsites.net/homepage.html
 
 
 
 Solution Design
 ===============
 
-/Controllers/TicTacToeController : Controller for the end points.
-/Lib/AiComputer : Static class  which implements all logics and strategies performed by the computer to execute the move.
-/Lib/Game : Class which implements a round of the game (receive a move -> validate -> computer analysis -> returns computer move.
-/Lib/Rules : Class which implements some rules of the game that must be followed.
-/Lib/Library : Class used to store libraries of classes commonly used in the project.
-/Data/CodeTicTacToeRepo - Reporitory created trying to achieve the decouple between controller and repository.
-/Data/ITicTacToeRepo - Interface create to separate controller from repository. Decouple approach.
-/Models/Tictactoe - Model represententation of the game which is used internally.
-/DataObjects/TicTacToeMoveDto - Stores the classes which represents the data structured used externally, where you can find the structure of the move executed inbound and the result move response structures needed by the API.
-/DataObjectsMapping/TicTacToeMapping - Class used to apply the mapping between internal and external data structures, not sure if this was a good approach, considerin the small number of properties.
+API
+    /Controllers/TicTacToeController : Controller for the end points.
+    /Lib/AiComputer : Static class  which implements all logics and strategies performed by the computer to execute the move.
+    /Lib/Game : Class which implements a round of the game (receive a move -> validate -> computer analysis -> returns computer move.
+    /Lib/Rules : Class which implements some rules of the game that must be followed.
+    /Lib/Library : Class used to store libraries of classes commonly used in the project.
+    /Data/CodeTicTacToeRepo - Reporitory created trying to achieve the decouple between controller and repository.
+    /Data/ITicTacToeRepo - Interface create to separate controller from repository. Decouple approach.
+    /Models/Tictactoe - Model represententation of the game which is used internally.
+    /DataObjects/TicTacToeMoveDto - Stores the classes which represents the data structured used externally, where you can find the structure of the move executed inbound and the result move response structures needed by the API.
+    /DataObjectsMapping/TicTacToeMapping - Class used to apply the mapping between internal and external data structures, not sure if this was a good approach, considerin the small number of properties.
+
+Javascrip Application
+    HomePage.html - One page application with support of the javascript to render the game.
+    /static/style.css - simple css for the interface.
+    /static/index.js - Javascript with all functions required to execute the application.
+
+    This application has a configuration "form", where you can define the symbols, who starts playing, and the end point to test the API. The default is my API, but you can test others.
 
 ERROR Handling
 ===============
@@ -57,5 +68,11 @@ Challenges during the assignment
 4) I wasn't able to implement the schema validation of the Json. I though it would be so simple, but all explanations in the internet were very complicated for a beginner like me with C# + JSON.
 
 5) Every time any correction was implemented in the code, I had to recreate the Client SDK again to run the test.
+
+6) I was so tired that I wasn't able to test the Functional Test in Azure, but everything was fine locally.
+
+7) CORS was a big challenge. I took sometime to figure our how I could test my javascript application.
+
+8) Javascript promisses Fetch function - Take time to recall how this works, this is not simple or intuitive as if then, loop, function, or classes.
 
  
